@@ -1,11 +1,15 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import auth from '@/utils/auth'
-import Article from '@/views/article'
+//导入组件
+import Login from '@/views/login'
 Vue.use(VueRouter)
+//初始化
 const router = new VueRouter({
     routes: [
-        { path: '/article', component: Article }
+        {
+            path: '/login', component: Login
+        }
     ]
 })
+//导出
 export default router
