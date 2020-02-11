@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from '@/router'
 //导入el组件
 import ElementUI from 'element-ui'
+import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 // 使用饿了么UI
 Vue.use(ElementUI)
@@ -12,6 +13,8 @@ Vue.use(ElementUI)
 // fasle 不是生产环境级别日志，开发环境日志，日志详细
 // true 生产环境级别日志，上线之后部署服务器之后，日志简单
 Vue.config.productionTip = false
+//挂载$http对象
+Vue.prototype.$http = axios
 // 根实例
 // 使用App.vue组件渲染到 #app容器中
 //挂载

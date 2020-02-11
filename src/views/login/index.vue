@@ -2,22 +2,23 @@
   <!-- 全屏容器 -->
   <div class="container-login">
     <video
-      class="cover_video"
-      src="https://sky.res.netease.com/2019/0515/4.mp4"
-      id="LoopVideo"
-      style="object-fit:cover"
-      preload
+      class="fullscreenvideo"
+      poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg"
+      id="bgvid"
+      autoplay
       muted
       loop
-    ></video>
+    >
+      <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4" />
+    </video>
     <el-card class="my-card">
       <img src="../../assets/logo_index.png" alt />
       <!-- el-form 作用：表单容器 -->
-      <el-form :model="loginForm">
-        <el-form-item>
+      <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
+        <el-form-item prop="mobile">
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="code">
           <el-input
             v-model="loginForm.code"
             placeholder="请输入验证码"
@@ -30,7 +31,7 @@
           <el-checkbox :value="true">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width:100%">登录</el-button>
+          <el-button @click="login()" type="primary" style="width:100%">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -41,12 +42,66 @@
 export default {
   //使用组件的名字
   data() {
+    //自定义校验手机号的函数
+    const checkMobile = (rule, value, callback) => {
+      //进行校验
+      if (!/^1[3-9]\d{9}$/.test(value)) {
+        //校验失败
+        callback(new Error("手机号格式错误"));
+      } else {
+        //校验成功
+        callback();
+      }
+    };
     return {
+      // 表单对应的数据对象
       loginForm: {
         mobile: "",
         code: ""
+      },
+      // 表单对应的校验规则
+      loginRules: {
+        mobile: [
+          //用户名（手机号）
+          {
+            required: true, //是否必填
+            message: "请输入手机号", //错误信息
+            trigger: "blur" //触发校验时机
+          },
+          { validator: checkMobile, trigger: "blur" }
+        ],
+        code: [
+          { required: true, message: "请输入验证码", trigger: "blur" },
+          //len 输入内容必须是6位  min max 指定字符串的范围
+          { len: 6, message: "验证码6个字符", trigger: "blur" }
+        ]
       }
     };
+  },
+  methods: {
+    login() {
+      //对整体表单的校验;
+      this.$refs.loginForm.validate(valid => {
+        //valid的值为true
+        if (valid) {
+          //TODO进行登录
+          this.$http
+            .post(
+              //请求地址
+              "http://ttapi.research.itcast.cn/mp/v1_0/authorizations",
+              //请求参数
+              this.loginForm
+            )
+            .then(res => {
+              //响应报文对象
+              this.$router.push("/");
+            })
+            .catch(() => {
+              this.$message.error("手机号或验证码错误");
+            });
+        }
+      });
+    }
   }
 };
 </script>
@@ -65,6 +120,13 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+  }
+  .fullscreenvideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: 1s opacity;
+    transition: 1s opacity;
   }
   .my-card {
     width: 400px;
