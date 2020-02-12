@@ -1,10 +1,12 @@
 <template>
   <!-- 全屏容器 -->
   <div class="container-login">
-    <video src="https://sky.res.netease.com/2019/0515/4.mp4" id="LoopVideo" class="cover_video" style="object-fit:cover" preload="" muted="" loop="" width="100%" height="100%"></video>
+    <video class="fullscreenvideo" poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg" id="bgvid" playsinline="" autoplay="" muted="" loop="">
+            <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4">
+        </video>
     <!-- 卡片 -->
     <el-card class="my-card">
-      <img src="../../assets/logo_index.png" alt />
+      <img src="../../assets/IMG_1332.png" alt />
       <!-- 表单 -->
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" status-icon>
         <el-form-item prop="mobile">
@@ -23,7 +25,7 @@
           <el-checkbox :value="true">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button @click="login()" type="primary" style="width:100%">登录</el-button>
+          <el-button @click="login()" type="primary" style="width:100%" class="color">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -110,9 +112,12 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background: url(../../assets/login_bg.jpg) no-repeat;
   // 让背景图等比例缩放 去铺满容器
   background-size: cover;
+  .fullscreenvideo {
+    width: 100%;
+    transition: 1s opacity;
+  }
   .my-card {
     width: 400px;
     height: 350px;
@@ -121,9 +126,13 @@ export default {
     left: 50%;
     top: 50%;
     img {
-      width: 200px;
+      width: 150px;
       display: block;
-      margin: 0 auto 20px;
+      margin:-10px auto;
+    }
+    .color {
+      background-color: #D42B23;
+      border-color: #D42B23
     }
   }
 }
