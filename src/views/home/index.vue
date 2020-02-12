@@ -1,13 +1,17 @@
 <template>
   <el-container class="container-home">
-    <el-aside class="my-aside" width="200px">
-      <div class="logo"></div>
-      <el-menu  default-active="1"
+    <el-aside class="my-aside" :width="isOpen?'200px':'64px'">
+      <div class="logo" :class="{minLogo:!isOpen}"></div>
+      <el-menu
+        default-active="1"
         background-color="rgba(248, 242, 242, 0.856)"
         text-color="#A1A1A1"
         active-text-color="#ffd04b"
-        style="border-right:none">
-       <el-menu-item index="1">
+        style="border-right:none"
+        :collapse="!isOpen"
+        :collapse-transition="false"
+      >
+        <el-menu-item index="1">
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
@@ -39,7 +43,7 @@
     </el-aside>
     <el-container>
       <el-header class="my-header">
-        <span class="icon el-icon-s-fold"></span>
+        <span @click="toggleMenu()" class="icon el-icon-s-fold"></span>
         <span class="text">江苏传智播客科技教育有限公司</span>
         <el-dropdown class="my-dropdown">
           <span class="el-dropdown-link">
@@ -55,14 +59,29 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <!-- 二级路由显示位置 -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: "app-home"
+  name: "app-home",
+  data() {
+    return {
+      isOpen: true
+    }
+  },
+  methods: {
+    //点击icon 收放侧边栏
+    toggleMenu() {
+      //切换状态
+      this.isOpen = !this.isOpen;
+    }
+  }
 };
 </script>
 
@@ -78,7 +97,12 @@ export default {
     .logo {
       width: 100%;
       height: 60px;
-      background: #fff url(../../assets/IMG_1332.png) no-repeat center / 140px auto;
+      background: #fff url(../../assets/IMG_1332.png) no-repeat center / 140px
+        auto;
+    }
+    .minLogo {
+      background: rgba(251, 248, 248, 0.959) url(../../assets/min_logo.png) no-repeat center;
+      background-size: 36px auto;
     }
   }
   .my-header {
