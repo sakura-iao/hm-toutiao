@@ -1,9 +1,17 @@
 <template>
   <!-- 全屏容器 -->
   <div class="container-login">
-    <video class="fullscreenvideo" poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg" id="bgvid" playsinline="" autoplay="" muted="" loop="">
-            <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4">
-        </video>
+    <video
+      class="fullscreenvideo"
+      poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg"
+      id="bgvid"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4" />
+    </video>
     <!-- 卡片 -->
     <el-card class="my-card">
       <img src="../../assets/IMG_1332.png" alt />
@@ -33,6 +41,7 @@
 </template>
 
 <script>
+import auth from "@/utils/auth";
 export default {
   name: "app-login",
   data() {
@@ -91,6 +100,8 @@ export default {
             .then(res => {
               // 响应报文对象（响应状态行，响应头，响应主体）
               // 粗暴跳转到首页即可
+              // res.data = {message:'',data:'用户信息'} 比对
+              auth.setUser(res.data.data);
               this.$router.push("/");
             })
             .catch(() => {
@@ -114,9 +125,11 @@ export default {
   left: 0;
   // 让背景图等比例缩放 去铺满容器
   background-size: cover;
+  overflow: hidden;
   .fullscreenvideo {
     width: 100%;
     transition: 1s opacity;
+    
   }
   .my-card {
     width: 400px;
@@ -128,11 +141,11 @@ export default {
     img {
       width: 150px;
       display: block;
-      margin:-10px auto;
+      margin: -10px auto;
     }
     .color {
-      background-color: #D42B23;
-      border-color: #D42B23
+      background-color: #d42b23;
+      border-color: #d42b23;
     }
   }
 }

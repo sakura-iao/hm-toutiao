@@ -1,9 +1,12 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+import auth from '@/utils/auth'
 import Login from '@/views/login'
 import Home from '@/views/home'
 import Welcome from '@/views/welcome'
 import NotFound from '@/views/404'
+
+import { TabPane } from 'element-ui'
 Vue.use(VueRouter)
 const router = new VueRouter({
     routes: [
@@ -19,5 +22,16 @@ const router = new VueRouter({
         { path: '*', component: NotFound }
 
     ]
+})
+//前置导航守卫
+router.beforeEach((to,from,next)=> {
+    //参数意义
+    //to：跳转去的路由对象
+    //from：来自哪个路由对象
+    //next（） 放行
+    //next（'/login'）拦截到登录路由
+    if (to.path !== '/login' && !auth.getUser().token) return next('/login')
+    //其他情况放行
+    next()
 })
 export default router
