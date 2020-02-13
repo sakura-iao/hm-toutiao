@@ -68,12 +68,20 @@
 </template>
 
 <script>
+import auth from "@/utils/auth";
 export default {
   name: "app-home",
   data() {
     return {
-      isOpen: true
-    }
+      isOpen: true,
+      name: "",
+      photo: ""
+    };
+  },
+  created() {
+    const user = auth.getUser();
+    this.name = user.name;
+    this.photo = user.photo;
   },
   methods: {
     //点击icon 收放侧边栏
@@ -101,7 +109,8 @@ export default {
         auto;
     }
     .minLogo {
-      background: rgba(251, 248, 248, 0.959) url(../../assets/min_logo.png) no-repeat center;
+      background: rgba(251, 248, 248, 0.959) url(../../assets/min_logo.png)
+        no-repeat center;
       background-size: 36px auto;
     }
   }
