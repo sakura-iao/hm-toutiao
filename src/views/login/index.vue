@@ -5,28 +5,18 @@
       class="fullscreenvideo"
       poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg"
       id="bgvid"
-<<<<<<< HEAD
-=======
       playsinline
->>>>>>> home
       autoplay
       muted
       loop
     >
       <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4" />
     </video>
-<<<<<<< HEAD
-    <el-card class="my-card">
-      <img src="../../assets/logo_index.png" alt />
-      <!-- el-form 作用：表单容器 -->
-      <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
-=======
     <!-- 卡片 -->
     <el-card class="my-card">
       <img src="../../assets/IMG_1332.png" alt />
       <!-- 表单 -->
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" status-icon>
->>>>>>> home
         <el-form-item prop="mobile">
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
@@ -43,11 +33,7 @@
           <el-checkbox :value="true">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-<<<<<<< HEAD
-          <el-button @click="login()" type="primary" style="width:100%">登录</el-button>
-=======
           <el-button @click="login()" type="primary" style="width:100%" class="color">登录</el-button>
->>>>>>> home
         </el-form-item>
       </el-form>
     </el-card>
@@ -55,19 +41,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-  //使用组件的名字
-  data() {
-    //自定义校验手机号的函数
-    const checkMobile = (rule, value, callback) => {
-      //进行校验
-      if (!/^1[3-9]\d{9}$/.test(value)) {
-        //校验失败
-        callback(new Error("手机号格式错误"));
-      } else {
-        //校验成功
-=======
 import auth from "@/utils/auth";
 export default {
   name: "app-login",
@@ -80,7 +53,6 @@ export default {
         callback(new Error("手机号格式错误"));
       } else {
         // 校验成功
->>>>>>> home
         callback();
       }
     };
@@ -93,29 +65,16 @@ export default {
       // 表单对应的校验规则
       loginRules: {
         mobile: [
-<<<<<<< HEAD
-          //用户名（手机号）
-          {
-            required: true, //是否必填
-            message: "请输入手机号", //错误信息
-            trigger: "blur" //触发校验时机
-          },
-=======
           // required 是否必填
           // message 错误提示
           // trigger 触发校验时机
           { required: true, message: "请输入手机号", trigger: "blur" },
           // 手机号格式校验没有提供  需要实现自定义校验
->>>>>>> home
           { validator: checkMobile, trigger: "blur" }
         ],
         code: [
           { required: true, message: "请输入验证码", trigger: "blur" },
-<<<<<<< HEAD
-          //len 输入内容必须是6位  min max 指定字符串的范围
-=======
           // len 输入内容必须是 6位  min max 指定字符串的范围
->>>>>>> home
           { len: 6, message: "验证码6个字符", trigger: "blur" }
         ]
       }
@@ -123,25 +82,6 @@ export default {
   },
   methods: {
     login() {
-<<<<<<< HEAD
-      //对整体表单的校验;
-      this.$refs.loginForm.validate(valid => {
-        //valid的值为true
-        if (valid) {
-          //TODO进行登录
-          this.$http
-            .post(
-              //请求地址
-              "http://ttapi.research.itcast.cn/mp/v1_0/authorizations",
-              //请求参数
-              this.loginForm
-            )
-            .then(res => {
-              //响应报文对象
-              this.$router.push("/");
-            })
-            .catch(() => {
-=======
       // 对整体表单进行校验
       this.$refs.loginForm.validate(valid => {
         // valid 值 true 校验成功
@@ -166,7 +106,6 @@ export default {
             })
             .catch(() => {
               // 提示  手机号或验证码错误
->>>>>>> home
               this.$message.error("手机号或验证码错误");
             });
         }
@@ -180,25 +119,6 @@ export default {
 .container-login {
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  .bgc {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .fullscreenvideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: 1s opacity;
-    transition: 1s opacity;
-=======
   // 设置我的容器绝对定位  依赖窗口的高度和宽度
   position: absolute;
   top: 0;
@@ -210,7 +130,6 @@ export default {
     width: 100%;
     transition: 1s opacity;
     
->>>>>>> home
   }
   .my-card {
     width: 400px;
@@ -220,11 +139,6 @@ export default {
     left: 50%;
     top: 50%;
     img {
-<<<<<<< HEAD
-      width: 200px;
-      display: block;
-      margin: 0 auto 20px;
-=======
       width: 150px;
       display: block;
       margin: -10px auto;
@@ -232,7 +146,6 @@ export default {
     .color {
       background-color: #d42b23;
       border-color: #d42b23;
->>>>>>> home
     }
   }
 }

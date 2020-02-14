@@ -1,29 +1,10 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-<<<<<<< HEAD
 //导入组件
-import Login from '@/views/login'
-=======
-import auth from '@/utils/auth'
-import Login from '@/views/login'
-import Home from '@/views/home'
-import Welcome from '@/views/welcome'
-import NotFound from '@/views/404'
-
-import { TabPane } from 'element-ui'
->>>>>>> home
 Vue.use(VueRouter)
 //初始化
 const router = new VueRouter({
     routes: [
-<<<<<<< HEAD
-        {
-            path: '/login', component: Login
-        }
-    ]
-})
-//导出
-=======
         { path: '/login', component: Login },
         {
             path: '/',
@@ -48,5 +29,4 @@ router.beforeEach((to,from,next)=> {
     //其他情况放行
     next()
 })
->>>>>>> home
 export default router
