@@ -65,15 +65,12 @@ export default {
       // 表单对应的校验规则
       loginRules: {
         mobile: [
-<<<<<<< HEAD
           //用户名（手机号）
           {
             required: true, //是否必填
             message: "请输入手机号", //错误信息
             trigger: "blur" //触发校验时机
           },
-=======
->>>>>>> home
           // required 是否必填
           // message 错误提示
           // trigger 触发校验时机
