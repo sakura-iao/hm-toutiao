@@ -128,25 +128,6 @@ export default {
 .container-login {
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  .bgc {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .fullscreenvideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: 1s opacity;
-    transition: 1s opacity;
-=======
   // 设置我的容器绝对定位  依赖窗口的高度和宽度
   position: absolute;
   top: 0;
@@ -158,7 +139,6 @@ export default {
     width: 100%;
     transition: 1s opacity;
     
->>>>>>> home
   }
   .my-card {
     width: 400px;
