@@ -5,28 +5,18 @@
       class="fullscreenvideo"
       poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg"
       id="bgvid"
-<<<<<<< HEAD
-=======
       playsinline
->>>>>>> home
       autoplay
       muted
       loop
     >
       <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4" />
     </video>
-<<<<<<< HEAD
-    <el-card class="my-card">
-      <img src="../../assets/logo_index.png" alt />
-      <!-- el-form 作用：表单容器 -->
-      <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
-=======
     <!-- 卡片 -->
     <el-card class="my-card">
       <img src="../../assets/IMG_1332.png" alt />
       <!-- 表单 -->
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" status-icon>
->>>>>>> home
         <el-form-item prop="mobile">
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
@@ -43,11 +33,7 @@
           <el-checkbox :value="true">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-<<<<<<< HEAD
-          <el-button @click="login()" type="primary" style="width:100%">登录</el-button>
-=======
           <el-button @click="login()" type="primary" style="width:100%" class="color">登录</el-button>
->>>>>>> home
         </el-form-item>
       </el-form>
     </el-card>
@@ -55,19 +41,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-  //使用组件的名字
-  data() {
-    //自定义校验手机号的函数
-    const checkMobile = (rule, value, callback) => {
-      //进行校验
-      if (!/^1[3-9]\d{9}$/.test(value)) {
-        //校验失败
-        callback(new Error("手机号格式错误"));
-      } else {
-        //校验成功
-=======
 import auth from "@/utils/auth";
 export default {
   name: "app-login",
@@ -80,7 +53,6 @@ export default {
         callback(new Error("手机号格式错误"));
       } else {
         // 校验成功
->>>>>>> home
         callback();
       }
     };
@@ -93,12 +65,15 @@ export default {
       // 表单对应的校验规则
       loginRules: {
         mobile: [
+<<<<<<< HEAD
           //用户名（手机号）
           {
             required: true, //是否必填
             message: "请输入手机号", //错误信息
             trigger: "blur" //触发校验时机
           },
+=======
+>>>>>>> home
           // required 是否必填
           // message 错误提示
           // trigger 触发校验时机
@@ -153,6 +128,7 @@ export default {
 .container-login {
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -170,6 +146,19 @@ export default {
     left: 0;
     -webkit-transition: 1s opacity;
     transition: 1s opacity;
+=======
+  // 设置我的容器绝对定位  依赖窗口的高度和宽度
+  position: absolute;
+  top: 0;
+  left: 0;
+  // 让背景图等比例缩放 去铺满容器
+  background-size: cover;
+  overflow: hidden;
+  .fullscreenvideo {
+    width: 100%;
+    transition: 1s opacity;
+    
+>>>>>>> home
   }
   .my-card {
     width: 400px;
