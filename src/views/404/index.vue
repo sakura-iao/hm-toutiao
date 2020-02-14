@@ -14,7 +14,7 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    background: url(../../assets/404.png) no-repeat;
+    background: url(../../assets/timg.gif) no-repeat;
     background-size: cover;
 }
 </style>
