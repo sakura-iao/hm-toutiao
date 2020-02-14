@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+<<<<<<< HEAD
     "core-js": "^3.4.4",
+=======
+    "core-js": "^3.6.4",
+>>>>>>> home
     "element-ui": "^2.13.0",
     "vue": "^2.6.10",
     "vue-router": "^3.1.5"
