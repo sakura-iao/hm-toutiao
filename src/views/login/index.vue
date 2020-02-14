@@ -93,29 +93,22 @@ export default {
       // 表单对应的校验规则
       loginRules: {
         mobile: [
-<<<<<<< HEAD
           //用户名（手机号）
           {
             required: true, //是否必填
             message: "请输入手机号", //错误信息
             trigger: "blur" //触发校验时机
           },
-=======
           // required 是否必填
           // message 错误提示
           // trigger 触发校验时机
           { required: true, message: "请输入手机号", trigger: "blur" },
           // 手机号格式校验没有提供  需要实现自定义校验
->>>>>>> home
           { validator: checkMobile, trigger: "blur" }
         ],
         code: [
           { required: true, message: "请输入验证码", trigger: "blur" },
-<<<<<<< HEAD
-          //len 输入内容必须是6位  min max 指定字符串的范围
-=======
           // len 输入内容必须是 6位  min max 指定字符串的范围
->>>>>>> home
           { len: 6, message: "验证码6个字符", trigger: "blur" }
         ]
       }
@@ -123,25 +116,6 @@ export default {
   },
   methods: {
     login() {
-<<<<<<< HEAD
-      //对整体表单的校验;
-      this.$refs.loginForm.validate(valid => {
-        //valid的值为true
-        if (valid) {
-          //TODO进行登录
-          this.$http
-            .post(
-              //请求地址
-              "http://ttapi.research.itcast.cn/mp/v1_0/authorizations",
-              //请求参数
-              this.loginForm
-            )
-            .then(res => {
-              //响应报文对象
-              this.$router.push("/");
-            })
-            .catch(() => {
-=======
       // 对整体表单进行校验
       this.$refs.loginForm.validate(valid => {
         // valid 值 true 校验成功
@@ -166,7 +140,6 @@ export default {
             })
             .catch(() => {
               // 提示  手机号或验证码错误
->>>>>>> home
               this.$message.error("手机号或验证码错误");
             });
         }
@@ -180,7 +153,6 @@ export default {
 .container-login {
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -198,19 +170,6 @@ export default {
     left: 0;
     -webkit-transition: 1s opacity;
     transition: 1s opacity;
-=======
-  // 设置我的容器绝对定位  依赖窗口的高度和宽度
-  position: absolute;
-  top: 0;
-  left: 0;
-  // 让背景图等比例缩放 去铺满容器
-  background-size: cover;
-  overflow: hidden;
-  .fullscreenvideo {
-    width: 100%;
-    transition: 1s opacity;
-    
->>>>>>> home
   }
   .my-card {
     width: 400px;
@@ -220,11 +179,6 @@ export default {
     left: 50%;
     top: 50%;
     img {
-<<<<<<< HEAD
-      width: 200px;
-      display: block;
-      margin: 0 auto 20px;
-=======
       width: 150px;
       display: block;
       margin: -10px auto;
@@ -232,7 +186,6 @@ export default {
     .color {
       background-color: #d42b23;
       border-color: #d42b23;
->>>>>>> home
     }
   }
 }

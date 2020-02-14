@@ -5,11 +5,6 @@ import App from './App.vue'
 import router from '@/router'
 //导入el组件
 import ElementUI from 'element-ui'
-<<<<<<< HEAD
-import axios from 'axios'
-import 'element-ui/lib/theme-chalk/index.css'
-// 使用饿了么UI
-=======
 import 'element-ui/lib/theme-chalk/index.css' 
 // 导入 axios
 import axios from 'axios'
@@ -17,7 +12,6 @@ import axios from 'axios'
 // 挂载 $http 对象就是axios
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
->>>>>>> home
 Vue.use(ElementUI)
 // 配置vue框架的日志级别  productionTip
 // fasle 不是生产环境级别日志，开发环境日志，日志详细
