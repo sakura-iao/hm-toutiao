@@ -1,17 +1,9 @@
 <template>
   <!-- 全屏容器 -->
   <div class="container-login">
-    <video
-      class="fullscreenvideo"
-      poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg"
-      id="bgvid"
-      playsinline
-      autoplay
-      muted
-      loop
-    >
-      <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4" />
-    </video>
+   <video class="fullscreenvideo" poster="__ROOT__/Themes/tdt/Asset/images/loginbg.jpg" id="bgvid" playsinline="" autoplay="" muted="" loop="">
+            <source src="https://sky.res.netease.com/2019/0515/4.mp4" type="video/mp4">
+        </video>
     <!-- 卡片 -->
     <el-card class="my-card">
       <img src="../../assets/IMG_1332.png" alt />
